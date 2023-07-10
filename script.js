@@ -163,9 +163,19 @@ function shuffleArray(array) {
 // TODO 1
 // Given an array of possible answers, a correct answer value, and a number of choices to get,
 // return a list of that many choices, including the correct answer and others from the array
-function getMultipleChoices(n, correctAnswer, array) {
+function getMultipleChoices(n, correctAnswer, possibleChoices) {
   // Use a while loop and the getRandomElement() function
   // Make sure there are no duplicates in the array
+  const choices = [];
+  choices.push(correctAnswer);
+  while (choices.length < n) {
+    let candidate = getRandomElement(possibleChoices);
+    if (!choices.includes(candidate)) {
+      choices.push();
+    }
+  }
+
+  return shuffleArray(choices);
 }
 
 // TODO 2
