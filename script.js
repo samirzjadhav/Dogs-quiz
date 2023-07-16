@@ -183,6 +183,12 @@ function getMultipleChoices(n, correctAnswer, array) {
 function getBreedFromURL(url) {
   // The string method .split(char) may come in handy
   // Try to use destructuring as much as you can
+  const [, path] = url.split("/breeds/");
+  const [breedID] = path.split("/");
+  const [breed, subtype] = breedID.split("-");
+  return [subtype, breed].join(" ");
+}
+
 // TODO 3
 // Given a URL, fetch the resource at that URL,
 // then parse the response as a JSON object,
