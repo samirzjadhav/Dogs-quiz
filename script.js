@@ -255,3 +255,5 @@ async function loadQuizData() {
 // TODO 5
 // Asynchronously call the loadQuizData() function,
 // Then call renderQuiz() with the returned imageUrl, correctAnswer, and choices
+const [imageUrl, correctAnswer, choices] = await loadQuizData();
+renderQuiz(imageUrl, correctAnswer, choices);
