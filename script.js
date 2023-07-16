@@ -221,6 +221,12 @@ function renderButtons(choicesArray, correctAnswer) {
   // Create a button element whose name, value, and textContent properties are the value of that choice,
   // attach a "click" event listener with the buttonHandler function,
   // and append the button as a child of the options element
+  choicesArray.map((choice) => {
+    let button = document.createElement("button");
+    button.value = button.name = button.textContent = choice;
+    button.addEventListener("click", buttonHandler);
+    options.appendChild(button);
+  });
 }
 
 // Function to add the quiz content to the page
