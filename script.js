@@ -163,18 +163,17 @@ function shuffleArray(array) {
 // TODO 1
 // Given an array of possible answers, a correct answer value, and a number of choices to get,
 // return a list of that many choices, including the correct answer and others from the array
-function getMultipleChoices(n, correctAnswer, possibleChoices) {
+function getMultipleChoices(n, correctAnswer, array) {
   // Use a while loop and the getRandomElement() function
   // Make sure there are no duplicates in the array
-  const choices = [];
-  choices.push(correctAnswer);
+  const choices = [correctAnswer];
   while (choices.length < n) {
-    let candidate = getRandomElement(possibleChoices);
-    if (!choices.includes(candidate)) {
-      choices.push();
+    let candidate = getRandomElement(array);
+    if (choices.indexOf(candidate) < 0) {
+      // check if this is already in the array
+      choices.push(candidate); // if not, add it
     }
   }
-
   return shuffleArray(choices);
 }
 
@@ -184,13 +183,10 @@ function getMultipleChoices(n, correctAnswer, possibleChoices) {
 function getBreedFromURL(url) {
   // The string method .split(char) may come in handy
   // Try to use destructuring as much as you can
-}
-
 // TODO 3
 // Given a URL, fetch the resource at that URL,
 // then parse the response as a JSON object,
 // finally return the "message" property of its body
-async function fetchMessage(url) {}
 
 // Function to add the multiple-choice buttons to the page
 function renderButtons(choicesArray, correctAnswer) {
@@ -217,7 +213,6 @@ function renderButtons(choicesArray, correctAnswer) {
 }
 
 // Function to add the quiz content to the page
-
 function renderQuiz(imgUrl, correctAnswer, choices) {
   const image = document.createElement("img");
   image.setAttribute("src", imgUrl);
@@ -240,7 +235,6 @@ async function loadQuizData() {
 
   return [doggoImgUrl, correctBreed, breedChoices];
 }
-
 // TODO 5
 // Asynchronously call the loadQuizData() function,
 // Then call renderQuiz() with the returned imageUrl, correctAnswer, and choices
